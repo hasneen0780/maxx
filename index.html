@@ -1,107 +1,270 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>منصة شمس السادس</title>
+  <title>منصة ماكس التعليمية</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      background: linear-gradient(135deg, #4e54c8, #8f94fb);
+      background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
       color: #fff;
-      font-family: 'Arial', sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      overflow: hidden;
+      min-height: 100vh;
+      padding: 20px;
+      overflow-x: hidden;
     }
+    
     .container {
-      background: rgba(0, 0, 0, 0.8);
+      background: rgba(0, 0, 0, 0.7);
       padding: 30px;
-      border-radius: 10px;
+      border-radius: 15px;
       text-align: center;
-      box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
       width: 90%;
-      max-width: 500px;
+      max-width: 600px;
       animation: fadeIn 1s ease;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
+    
     @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.9); }
-      to { opacity: 1; transform: scale(1); }
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
+    
+    .logo {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 15px;
+      border-radius: 50%;
+      background: #fff;
+      padding: 5px;
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border: 3px solid #ffd700;
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% { box-shadow: 0 0 10px rgba(255, 215, 0, 0.7); }
+      50% { box-shadow: 0 0 25px rgba(255, 215, 0, 0.9); }
+      100% { box-shadow: 0 0 10px rgba(255, 215, 0, 0.7); }
+    }
+    
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    
     h1 {
-      font-size: 2em;
+      font-size: 2.5em;
       margin-bottom: 10px;
       color: #ffd700;
       text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+      font-weight: 700;
     }
-    p {
-      font-size: 1em;
+    
+    .tagline {
+      font-size: 1.1em;
+      margin-bottom: 25px;
+      color: #e0e0e0;
+      font-weight: 300;
+    }
+    
+    .input-group {
+      position: relative;
       margin-bottom: 20px;
-      color: #b0b3d6;
     }
+    
     input[type="text"] {
-      padding: 10px;
+      padding: 15px 20px;
       width: 100%;
       border: 2px solid #ffd700;
-      border-radius: 5px;
+      border-radius: 50px;
       margin-bottom: 15px;
       font-size: 1em;
-      background-color: #333;
+      background-color: rgba(255, 255, 255, 0.1);
       color: #fff;
       outline: none;
-      transition: 0.3s;
+      transition: all 0.3s;
+      padding-right: 50px;
     }
+    
     input[type="text"]:focus {
       border-color: #f39c12;
+      background-color: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 0 15px rgba(243, 156, 18, 0.5);
     }
+    
+    input[type="text"]::placeholder {
+      color: #b0b3d6;
+    }
+    
+    .input-icon {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #ffd700;
+      font-size: 1.2em;
+    }
+    
     button {
-      padding: 12px 25px;
+      padding: 15px 30px;
       border: none;
-      border-radius: 5px;
-      background-color: #f39c12;
+      border-radius: 50px;
+      background: linear-gradient(to right, #f39c12, #e67e22);
       color: #fff;
-      font-size: 1em;
+      font-size: 1.1em;
+      font-weight: 600;
       cursor: pointer;
-      transition: 0.3s;
+      transition: all 0.3s;
+      box-shadow: 0 5px 15px rgba(230, 126, 34, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      width: 80%;
     }
+    
     button:hover {
-      background-color: #e67e22;
+      background: linear-gradient(to right, #e67e22, #f39c12);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(230, 126, 34, 0.6);
     }
+    
+    button:active {
+      transform: translateY(0);
+    }
+    
+    .play-icon {
+      margin-left: 8px;
+    }
+    
+    #videoContainer {
+      display: none;
+      margin-top: 25px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      transition: all 0.5s ease;
+    }
+    
     iframe {
       width: 100%;
-      height: 300px;
+      height: 320px;
       border: none;
-      margin-top: 20px;
-      border-radius: 5px;
+      border-radius: 10px;
     }
+    
     .footer {
-      margin-top: 20px;
-      color: #d3d3d3;
-      font-size: 0.9em;
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
+    
+    .footer p {
+      margin-bottom: 10px;
+      color: #d3d3d3;
+      font-size: 0.95em;
+    }
+    
     .footer a {
       color: #ffd700;
       text-decoration: none;
+      transition: all 0.3s;
+      display: inline-block;
+      margin: 0 5px;
     }
+    
     .footer a:hover {
-      text-decoration: underline;
+      color: #f39c12;
+      transform: translateY(-2px);
+    }
+    
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 15px;
+    }
+    
+    .social-icons a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      transition: all 0.3s;
+    }
+    
+    .social-icons a:hover {
+      background: rgba(255, 215, 0, 0.2);
+      transform: translateY(-3px);
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        padding: 20px;
+      }
+      
+      h1 {
+        font-size: 2em;
+      }
+      
+      button {
+        width: 100%;
+      }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>منصة شمس السادس</h1>
-    <p>أدخل كود الفيديو لعرض المحاضرة:</p>
-    <input type="text" id="videoCode" placeholder="أدخل الكود هنا">
-    <button onclick="playVideo()">تشغيل المحاضرة</button>
-    <div id="videoContainer" style="display:none; margin-top: 20px;">
-      <iframe id="videoFrame" allow="autoplay; fullscreen"></iframe>
+    <div class="logo">
+      <img src="https://www2.0zz0.com/2025/09/04/08/622880473.jpg" alt="منصة ماكس التعليمية">
     </div>
+    
+    <h1>منصة ماكس التعليمية</h1>
+    <p class="tagline">نحو تعليم إلكتروني متطور ومبتكر</p>
+    
+    <div class="input-group">
+      <input type="text" id="videoCode" placeholder="أدخل كود المحاضرة هنا">
+      <div class="input-icon">
+        <i class="fas fa-key"></i>
+      </div>
+    </div>
+    
+    <button onclick="playVideo()">
+      <span>تشغيل المحاضرة</span>
+      <i class="fas fa-play play-icon"></i>
+    </button>
+    
+    <div id="videoContainer">
+      <iframe id="videoFrame" allow="autoplay; fullscreen" allowfullscreen></iframe>
+    </div>
+    
     <div class="footer">
-      <p>القناة الرئيسة على تيليجرام: <a href="https://t.me/u153646" target="_blank">اضغط هنا</a></p>
-      <p>بوت شمس السادس: <a href="https://t.me/ShamsVI1Bot" target="_blank">اضغط هنا</a></p>
+      <p>القناة الرئيسية على تيليجرام: <a href="https://t.me/u153646" target="_blank">@u153646</a></p>
+      <p>بوت منصة ماكس: <a href="https://t.me/ShamsVI1Bot" target="_blank">@MaxEduBot</a></p>
+      
+      <div class="social-icons">
+        <a href="https://t.me/u153646" target="_blank"><i class="fab fa-telegram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
     </div>
   </div>
 
@@ -112,8 +275,24 @@
         const videoUrl = `https://server2.hmyzc824-d08.workers.dev/proxy_iframe?url=${videoCode}`;
         document.getElementById('videoFrame').src = videoUrl;
         document.getElementById('videoContainer').style.display = "block";
+        
+        // تمرير إلى الفيديو بعد التحميل
+        setTimeout(() => {
+          document.getElementById('videoContainer').scrollIntoView({ 
+            behavior: 'smooth' 
+          });
+        }, 1000);
+      } else {
+        alert("يرجى إدخال كود المحاضرة أولاً");
       }
     }
+    
+    // للسماح بتشغيل الفيديو بالضغط على زر Enter
+    document.getElementById('videoCode').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        playVideo();
+      }
+    });
   </script>
 </body>
 </html>
